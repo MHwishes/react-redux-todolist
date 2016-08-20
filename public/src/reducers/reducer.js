@@ -2,17 +2,19 @@ const todoApp = (state = {todoItem: [], filterName: 'All'}, action)=> {
     switch (action.type) {
         case 'Add':
             state.todoItem.push({text: action.text, isDone: false});
-            return state;
+            return {todoItem: [...state.todoItem]};
 
         case 'Delete':
             state.todoItem.splice(action.index, 1);
-            return state;
+            return {todoItem: [...state.todoItem]};
 
         case 'SetName':
-            state.filterName=action.name;
-            return state;
+            // console.log(state);
+            return {todoItem:[...state.todoItem],filterName: action.name};
+
         case 'Toggle':
-            state.todoItem[action.index].isDone=! state.todoItem[action.index].isDone;
+            state.todoItem[action.index].isDone = !state.todoItem[action.index].isDone;
+            return {todoItem: [...state.todoItem]};
     }
     return state;
 };
