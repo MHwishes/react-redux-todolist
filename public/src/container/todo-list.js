@@ -2,7 +2,6 @@ import {Provider, connect} from 'react-redux';
 import TodoList from '../components/todo-list'
 
 function select(state) {
-    console.log(state);
     if (state.filterName === 'All') {
         return state.todoItem;
     }
@@ -16,6 +15,7 @@ function select(state) {
 }
 
 const mapStateToProps = (state)=> {
+
     return {
         todoItems: select(state)
     }
